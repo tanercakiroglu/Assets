@@ -1,13 +1,10 @@
 package com.chrental.pojo;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 public class Pet {
 
 	private String name ;
 	private String surname;
 	
-	@JsonCreator
 	public Pet(){
 		
 	}
