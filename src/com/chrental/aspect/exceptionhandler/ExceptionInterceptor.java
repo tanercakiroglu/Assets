@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
 import com.application.exception.BusinessException;
+import com.chrental.util.Constants;
 import com.chrental.util.Util;
 
 
@@ -22,10 +23,10 @@ public class ExceptionInterceptor {
 			ret = joinPoint.proceed();
 			return ret;
 		}catch(BusinessException bex){
-			return	Util.constructJSON("fail",bex.getMessage() ,false);
+			return	Util.constructJSON(Constants.BUSSINESSEXCEPTION,bex.getMessage() ,false);
 		}catch (Exception ex) {
 			ex.printStackTrace();
-		    return	Util.constructJSON("fail",ex.getMessage() ,false);
+		    return	Util.constructJSON(Constants.EXCEPTION,ex.getMessage() ,false);
 		}
 		
 	}

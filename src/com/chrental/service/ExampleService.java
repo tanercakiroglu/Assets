@@ -10,6 +10,7 @@ import com.chrental.Iservice.IExampleService;
 import com.chrental.aspect.exceptionhandler.HandleException;
 import com.chrental.aspect.logger.Loggable;
 import com.chrental.pojo.Pet;
+import com.chrental.util.Constants;
 import com.chrental.util.Util;
 
 @RestController
@@ -22,7 +23,7 @@ public class ExampleService implements IExampleService {
 	@Loggable
 	@Override
 	public Object getAllTasks() throws BusinessException {
-		return Util.constructJSON("Ok", true, exampleDAO.select());
+		return Util.constructJSON(Constants.SUCCESSFUL_OPERATION, true, exampleDAO.select());
 	}
 
 	@HandleException
@@ -30,7 +31,7 @@ public class ExampleService implements IExampleService {
 	@Override
 	public Object post(@RequestBody Pet pet) throws BusinessException {
 		
-		return Util.constructJSON("Ok", true, pet);
+		return Util.constructJSON(Constants.SUCCESSFUL_OPERATION, true, pet);
 	}
 
 }
