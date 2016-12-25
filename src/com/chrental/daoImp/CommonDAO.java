@@ -55,7 +55,7 @@ public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {
 		namedParameters.put("tripleCode", country.getTripleCode());
 		namedParameters.put("name", country.getName());
 		namedParameters.put("phoneCode", country.getPhoneCode());
-		namedParameters.put("order", country.getCode());
+		namedParameters.put("order", country.getOrder());
 		namedParameters.put("isActive", country.isActive());
 		rowAffected = namedParameterJdbcTemplate.update(query, namedParameters);
 		return rowAffected;

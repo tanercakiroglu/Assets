@@ -10,7 +10,7 @@ public class Country {
 	private String tripleCode;
 	private int order;
 	private Date createDate;
-	private boolean isActive;
+	private boolean active;
 	private String phoneCode;
 	
 	public Country(){
@@ -27,7 +27,7 @@ public class Country {
 		this.tripleCode = tripleCode;
 		this.order = order;
 		this.createDate = createDate;
-		this.isActive = isActive;
+		this.active = isActive;
 		this.phoneCode = phoneCode;
 	}
 
@@ -78,13 +78,18 @@ public class Country {
 		this.createDate = createDate;
 	}
 
+
 	public boolean isActive() {
-		return isActive;
+		return active;
 	}
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
+
+
 
 	public String getPhoneCode() {
 		return phoneCode;
