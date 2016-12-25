@@ -36,8 +36,9 @@
 		<constructor-arg index="0" ref="dataSource" />
 	</bean>
 
-	<bean id="exampleDAOs" class="com.chrental.daoImp.Example" />
-
+	<bean id="exampleDAO" class="com.chrental.daoImp.Example" />
+	<bean id="userDAO" class="com.chrental.daoImp.UserDAO" />
+	<bean id="commonDAO" class="com.chrental.daoImp.CommonDAO" />
 	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 
 	<bean id="pointcutMgrLogger" class="com.chrental.aspect.logger.LogManager" />

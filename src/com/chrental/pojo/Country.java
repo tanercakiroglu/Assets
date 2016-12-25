@@ -11,15 +11,28 @@ public class Country {
 	private int order;
 	private Date createDate;
 	private boolean isActive;
+	private String phoneCode;
 	
 	public Country(){
 		
 	}
 	
-	public Country(int ID, String name) {
-		this.ID = ID;
+	
+	
+	public Country(long ID, String name, String code, String tripleCode, int order, Date createDate, boolean isActive,
+			String phoneCode) {
+		this.ID=ID;
 		this.name = name;
+		this.code = code;
+		this.tripleCode = tripleCode;
+		this.order = order;
+		this.createDate = createDate;
+		this.isActive = isActive;
+		this.phoneCode = phoneCode;
 	}
+
+
+
 	public long getId() {
 		return ID;
 	}
@@ -31,14 +44,6 @@ public class Country {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public long getID() {
-		return ID;
-	}
-
-	public void setID(long iD) {
-		ID = iD;
 	}
 
 	public String getCode() {
@@ -80,6 +85,15 @@ public class Country {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+
+	public String getPhoneCode() {
+		return phoneCode;
+	}
+
+	public void setPhoneCode(String phoneCode) {
+		this.phoneCode = phoneCode;
+	}
+	
 	
 	
 }
