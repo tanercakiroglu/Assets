@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogManager {
 
-       @Pointcut("execution(* com.chrental.service..*(..))")
+       @Pointcut("execution(* com.chrental.controllerimpl..*(..))")
        public void auditLog() {}
 
-       @Pointcut("execution(* com.chrental.service..*(..))")
+       @Pointcut("execution(* com.chrental.controllerimpl..*(..))")
        public void performanceLog(){}
 
 }
