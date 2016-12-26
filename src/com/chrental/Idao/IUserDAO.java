@@ -1,4 +1,4 @@
-package com.chrental.Idao;
+package com.chrental.idao;
 
 import com.chrental.pojo.User;
 
