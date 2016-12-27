@@ -13,7 +13,7 @@ import com.chrental.idao.ICommonDAO;
 import com.chrental.pojo.Country;
 
 public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {
-
+    
 	private final RowMapper<Country> rowMapperCountry = new RowMapper<Country>() {
 
 		@Override
