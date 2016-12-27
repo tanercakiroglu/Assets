@@ -3,8 +3,10 @@ package com.chrental.serviceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.chrental.idao.IUserDAO;
-import com.chrental.iservice.IUserService;
+import com.chrental.Idao.IUserDAO;
+import com.chrental.Iservice.IUserService;
+
+
 
 public class UserService implements IUserService {
 

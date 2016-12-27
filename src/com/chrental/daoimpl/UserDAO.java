@@ -3,8 +3,8 @@ package com.chrental.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.chrental.Idao.IUserDAO;
 import com.chrental.basedao.BaseJDBCDAO;
-import com.chrental.idao.IUserDAO;
 import com.chrental.pojo.Role;
 import com.chrental.pojo.User;
 

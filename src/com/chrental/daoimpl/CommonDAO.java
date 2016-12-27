@@ -8,8 +8,9 @@ import java.util.Map;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import com.chrental.Idao.ICommonDAO;
 import com.chrental.basedao.BaseJDBCDAO;
-import com.chrental.idao.ICommonDAO;
+
 import com.chrental.pojo.Country;
 
 public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {

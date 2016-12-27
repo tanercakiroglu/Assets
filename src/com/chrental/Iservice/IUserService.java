@@ -1,4 +1,6 @@
-package com.chrental.iservice;
+package com.chrental.Iservice;
+
+
 
 public interface IUserService {
 

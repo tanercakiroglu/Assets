@@ -12,8 +12,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
-import com.chrental.idao.IUserDAO;
-import com.chrental.iservice.IUserService;
+import com.chrental.Iservice.IUserService;
 import com.chrental.pojo.User;
 
 @Component

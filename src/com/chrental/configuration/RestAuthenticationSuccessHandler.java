@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
-import com.chrental.idao.IUserDAO;
+import com.chrental.Idao.IUserDAO;
 import com.chrental.pojo.User;
 
 public class RestAuthenticationSuccessHandler  extends SimpleUrlAuthenticationSuccessHandler {
