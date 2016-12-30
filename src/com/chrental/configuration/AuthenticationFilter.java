@@ -1,15 +1,20 @@
 package com.chrental.configuration;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
+
+import com.nimbusds.jwt.JWT;
+import com.nimbusds.jwt.JWTParser;
 
 public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 	private static final String INTERCEPTOR_PROCESS_URL = "/rest/secured/**";
@@ -17,8 +22,6 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 
 	protected AuthenticationFilter() {
 		super(INTERCEPTOR_PROCESS_URL);
-		setAuthenticationSuccessHandler(new RestAuthenticationSuccessHandler());
-		setAuthenticationFailureHandler(new RestAuthenticationFailureHandler());
 	}
 
 	
@@ -26,16 +29,31 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException, IOException, ServletException {
 		  Authentication authResult = null;
-		    try {
-
-		        String eid = request.getHeader("authorization");
-		        String credentials = "NA";
-		        PreAuthenticatedAuthenticationToken authRequest = new PreAuthenticatedAuthenticationToken(eid, credentials);
-		        authRequest.setDetails(authenticationDetailsSource.buildDetails(request));
-		        authResult = getAuthenticationManager().authenticate(authRequest);
-		    } catch (AuthenticationException e) {
-		        unsuccessfulAuthentication(request, response, e);
-		    } 
+		  String stringToken =null;
+		  try {
+			    stringToken = request.getHeader("Authorization");
+	            if (stringToken == null) {
+	                throw new BadCredentialsException("Authorization header not found");
+	            }
+	            String authorizationSchema = "Bearer";
+	            if (stringToken.indexOf(authorizationSchema) == -1) {
+	                throw new BadCredentialsException("Authorization schema not found");
+	            }
+	            stringToken = stringToken.substring(authorizationSchema.length()).trim();
+	            
+	            try {
+	                JWT jwt = JWTParser.parse(stringToken);
+	                JWTToken token = new JWTToken(jwt);
+	                authResult = this.getAuthenticationManager().authenticate(token);
+	                response.addHeader("Authorization",stringToken);
+	                SecurityContextHolder.getContext().setAuthentication(authResult);
+	            } catch (ParseException e) {
+	                throw new BadCredentialsException("Invalid token");
+	            }
+	        } catch (AuthenticationException e) {
+	            SecurityContextHolder.clearContext();
+	            unsuccessfulAuthentication(request, response, e);
+	        }    
 		    return  authResult;
 		}
 		

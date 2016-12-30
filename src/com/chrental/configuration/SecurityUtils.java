@@ -52,7 +52,6 @@ public final class SecurityUtils {
         response.setContentType("application/json;charset=UTF-8");
         response.setStatus(status);
         PrintWriter writer = response.getWriter();
-        //Error error = new Error("authError", exception.getMessage());
         writer.write(mapper.writeValueAsString(Util.constructJSON(message, exception.getMessage(),status ==1 ? true:false )));
         writer.flush();
         writer.close();

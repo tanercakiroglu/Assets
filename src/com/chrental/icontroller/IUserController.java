@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.application.exception.BusinessException;
-import com.chrental.pojo.Pet;
+import com.chrental.pojo.User;
 
 public interface IUserController {
 
 	
-	@RequestMapping(value="/authenticate",method = RequestMethod.POST)
-	 public @ResponseBody Object findByLogin(Pet pet) throws BusinessException;
+	@RequestMapping(value="/login",method = RequestMethod.POST)
+	 public @ResponseBody Object findByLogin(User credential) throws BusinessException;
 	
 	
 	@RequestMapping(value="/secured/home",method = RequestMethod.GET)
