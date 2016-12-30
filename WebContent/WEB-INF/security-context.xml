@@ -47,6 +47,7 @@
 
 	<http auto-config='true' entry-point-ref="restUnauthorizedEntryPoint">
 		<intercept-url pattern="/rest/secured/**" access="ROLE_USER" />
+		<custom-filter ref="userTokenFilter" after="SECURITY_CONTEXT_FILTER" />
 		<access-denied-handler ref="restAccessDeniedHandler" />
 		<csrf disabled="true" />
 		<form-login login-processing-url="/rest/authenticate"
@@ -55,11 +56,16 @@
 			username-parameter="username" password-parameter="password" />
 		<logout logout-url="/rest/logout" invalidate-session="true"
 			delete-cookies="true" />
+<!-- 		<remember-me services-ref="rememberMeServices" key="rememberme"></remember-me> -->
 
 	</http>
 
-	<authentication-manager>
+	<authentication-manager alias="authenticationManager">
 		<authentication-provider ref="customAuthenticationProvider" />
 	</authentication-manager>
+	
+	<beans:bean id="userTokenFilter" class="com.chrental.configuration.AuthenticationFilter">
+    <beans:property name="authenticationManager" ref="authenticationManager" />
+  </beans:bean>
 
 </beans:beans>

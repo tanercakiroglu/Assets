@@ -13,6 +13,7 @@ public interface IUserController {
 	@RequestMapping(value="/authenticate",method = RequestMethod.POST)
 	 public @ResponseBody Object findByLogin(Pet pet) throws BusinessException;
 	
+	
 	@RequestMapping(value="/secured/home",method = RequestMethod.GET)
 	 public @ResponseBody Object secured() throws BusinessException;
 }

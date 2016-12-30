@@ -12,14 +12,16 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 
 public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+	private static final String INTERCEPTOR_PROCESS_URL = "/rest/secured/**";
 
-	private static final String INTERCEPTOR_PROCESS_URL = "/rest/**";
-	
-	protected AuthenticationFilter(String defaultFilterProcessesUrl) {
+
+	protected AuthenticationFilter() {
 		super(INTERCEPTOR_PROCESS_URL);
-		// TODO Auto-generated constructor stub
+		setAuthenticationSuccessHandler(new RestAuthenticationSuccessHandler());
+		setAuthenticationFailureHandler(new RestAuthenticationFailureHandler());
 	}
 
+	
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException, IOException, ServletException {
@@ -27,9 +29,6 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 		    try {
 
 		        String eid = request.getHeader("authorization");
-
-		        
-
 		        String credentials = "NA";
 		        PreAuthenticatedAuthenticationToken authRequest = new PreAuthenticatedAuthenticationToken(eid, credentials);
 		        authRequest.setDetails(authenticationDetailsSource.buildDetails(request));

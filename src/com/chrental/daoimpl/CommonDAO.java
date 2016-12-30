@@ -33,7 +33,7 @@ public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {
 	
 	@Override
 	public List<Country> getAllCountries() {
-		String query ="SELECT * FROM dbo.Country";
+		String query ="SELECT top(10) * FROM dbo.Country";
 		return jdbcTemplate.query(query, rowMapperCountry);
 	}
 
