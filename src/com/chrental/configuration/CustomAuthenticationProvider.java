@@ -45,7 +45,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 		Date expirationTime = claims.getExpirationTime();
 		if (expirationTime == null || expirationTime.before(referenceTime)) {
-			throw new BadCredentialsException("The token is expired");
+			throw new BadCredentialsException(Constants.TOKEN_EXPIRED);
 		}
 
 		Date notBeforeTime = claims.getNotBeforeTime();
@@ -53,10 +53,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			throw new BadCredentialsException("Not before is after sysdate");
 		}
 
-		String issuerReference = "my.site.com";
+		String issuerReference = Constants.ISSUER;
 		String issuer = claims.getIssuer();
 		if (!issuerReference.equals(issuer)) {
-			throw new BadCredentialsException("Invalid issuer");
+			throw new BadCredentialsException(Constants.INVALID_ISSUER);
 		}
 
 		jwtToken.setAuthenticated(true);

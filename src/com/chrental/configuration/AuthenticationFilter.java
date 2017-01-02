@@ -13,6 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 
+import com.chrental.util.Constants;
 import com.nimbusds.jwt.JWT;
 import com.nimbusds.jwt.JWTParser;
 
@@ -33,11 +34,11 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 		  try {
 			    stringToken = request.getHeader("Authorization");
 	            if (stringToken == null) {
-	                throw new BadCredentialsException("Authorization header not found");
+	                throw new BadCredentialsException(Constants.HEADER_NOT_FOUND);
 	            }
 	            String authorizationSchema = "Bearer";
 	            if (stringToken.indexOf(authorizationSchema) == -1) {
-	                throw new BadCredentialsException("Authorization schema not found");
+	                throw new BadCredentialsException(Constants.SCHEMA_NOT_FOUND);
 	            }
 	            stringToken = stringToken.substring(authorizationSchema.length()).trim();
 	            
@@ -48,7 +49,7 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 	                response.addHeader("Authorization",stringToken);
 	                SecurityContextHolder.getContext().setAuthentication(authResult);
 	            } catch (ParseException e) {
-	                throw new BadCredentialsException("Invalid token");
+	                throw new BadCredentialsException(Constants.INVALID_TOKEN);
 	            }
 	        } catch (AuthenticationException e) {
 	            SecurityContextHolder.clearContext();

@@ -54,7 +54,7 @@ public class UserTest {
 		Object returnVal = userService.checkCredential(credential);
 		assertTrue(returnVal instanceof CheckCredentialResponse);
 	}
-	
+	@Test
 	public void controllerCheckCredentialTest() throws BusinessException {
 		User credential = new User();
 		credential.setPassword(" ");
@@ -62,7 +62,7 @@ public class UserTest {
 		Object returnVal = userController.checkCredentail(credential);
 		assertTrue(returnVal instanceof String);
 	}
-
+	@Test
 	public void controllerCheckCredentialTest1() throws BusinessException {
 		User credential = new User();
 		credential.setPassword("123*-+");

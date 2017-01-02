@@ -17,7 +17,12 @@ public class Constants {
 	public final static String AUTHFAILED="Authentication failed";
 	public final static String SECRET_KEY="superSecretKeysssssssssssssssssssssssssssssss";
 	public final static String APPROVED="APPROVED";
-	
+	public final static String ISSUER ="chrental.site.com";
+	public final static String INVALID_ISSUER= "Invalid issuer";
+	public final static String TOKEN_EXPIRED="The token is expired";
+	public final static String HEADER_NOT_FOUND="Authorization header not found";
+	public final static String SCHEMA_NOT_FOUND="Authorization schema not found";
+	public final static String INVALID_TOKEN="Invalid token";
 	
 	
 }

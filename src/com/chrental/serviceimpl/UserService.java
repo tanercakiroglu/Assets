@@ -55,7 +55,7 @@ public class UserService implements IUserService {
 		Date tenFromNow = cal.getTime();
 		claimsSet.setSubject("alice");
 		claimsSet.setIssueTime(now);
-		claimsSet.setIssuer("clearsettle.site.com");
+		claimsSet.setIssuer(Constants.ISSUER);
 		claimsSet.setExpirationTime(tenFromNow);
 		claimsSet.setNotBeforeTime(now);
 		return claimsSet;
