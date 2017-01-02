@@ -2,15 +2,12 @@ package com.chrental.configuration;
 
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.stereotype.Component;
 
-import com.chrental.Iservice.IUserService;
+import com.chrental.util.Constants;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSVerifier;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -20,18 +17,13 @@ import com.nimbusds.jwt.PlainJWT;
 import com.nimbusds.jwt.ReadOnlyJWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 
-@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-	@Qualifier("userServices")
-	@Autowired
-	private IUserService userService;
-	
     
     private JWSVerifier verifier;
 
 	 public CustomAuthenticationProvider() {
-	        this.verifier = new MACVerifier("superSecretKeysssssssssssssssssssssssssssssss");
+	        this.verifier = new MACVerifier(Constants.SECRET_KEY);
 	    }
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {

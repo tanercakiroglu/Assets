@@ -11,9 +11,9 @@ public interface IUserController {
 
 	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
-	 public @ResponseBody Object findByLogin(User credential) throws BusinessException;
+	 public @ResponseBody String checkCredentail(User credential) throws BusinessException;
 	
 	
 	@RequestMapping(value="/secured/home",method = RequestMethod.GET)
-	 public @ResponseBody Object secured() throws BusinessException;
+	 public @ResponseBody String secured() throws BusinessException;
 }

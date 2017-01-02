@@ -3,11 +3,7 @@ package com.chrental.util;
 public class Constants {
 
 	
-	public final static String MENU_SERVICE_GET_MENU_LOG_ALIAS="/MENU/GETMENU";
-	public final static String USER_SERVICE_GET_USER_LOG_ALIAS="/USER/GETUSER";
-	public final static String MENU_SERVICE_GET_MENU_DAO_ALIAS="/MENUDAO/GETMENU";
-	public final static String USER_SERVICE_GET_USER_DAO_ALIAS="/USERDAO/GETUSER";
-	public final static String ORDER_SERVICE_GET_ORDER_DAO_ALIAS="/ORDERDAO/GETORDER";
+
 	public final static String LOGIN_FAILED="Login failed.You are not registered to our system. ";
 	public final static String INVALID_PARAMETERS="Invalid paramaters.One of the required paramaters null or empty";
 	public final static String DELETE_BUSSINES_EXCEPTION="No valid order to delete";
@@ -16,6 +12,11 @@ public class Constants {
 	public final static String BUSSINESSEXCEPTION="BUSSINES EXCEPTION";
 	public final static String EXCEPTION="EXCEPTION";
 	public final static String SUCCESSFUL_OPERATION="SUCCESSFUL OPERATION";
+	public final static String NOT_AUTH="Not authorized resources";
+	public final static String CREDENTIAL_NOT_VALID="Credential is not valid.Check your e-mail or password";
+	public final static String AUTHFAILED="Authentication failed";
+	public final static String SECRET_KEY="superSecretKeysssssssssssssssssssssssssssssss";
+	public final static String APPROVED="APPROVED";
 	
 	
 	
