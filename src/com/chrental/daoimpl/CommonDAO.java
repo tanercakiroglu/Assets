@@ -26,6 +26,7 @@ public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {
 			country.setCode(rs.getString("CODE"));
 			country.setCreateDate(rs.getDate("CREATEDATE"));
 			country.setTripleCode(rs.getString("TRIPLECODE"));
+			country.setPhoneCode(rs.getString("PHONECODE"));
 			return country;
 		}
 	};

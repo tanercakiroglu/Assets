@@ -13,7 +13,7 @@ public interface ICommonController {
 	 public @ResponseBody Object getAllCountries() throws BusinessException;
 	 
 	 @RequestMapping(value="/getCountry/{countryCode}",method = RequestMethod.GET)
-	 public @ResponseBody Object getAllCountries(String countryCode) throws BusinessException;
+	 public @ResponseBody Object getCountry(String countryCode) throws BusinessException;
 	 
 	 @RequestMapping(value="/insertCountry",method = RequestMethod.POST)
 	 public @ResponseBody Object insertCountry(Country country) throws BusinessException;

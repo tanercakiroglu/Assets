@@ -33,7 +33,7 @@ public class CommonController implements ICommonController {
 	@HandleException
 	@Loggable
 	@Override
-	public Object getAllCountries(@PathVariable String countryCode) throws BusinessException {
+	public Object getCountry(@PathVariable String countryCode) throws BusinessException {
 		return Util.constructJSON(Constants.SUCCESSFUL_OPERATION, true, commonService.getCountry(countryCode));
 	}
 
