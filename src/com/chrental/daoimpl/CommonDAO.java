@@ -34,7 +34,7 @@ public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {
 	
 	@Override
 	public List<Country> getAllCountries() {
-		String query ="SELECT top(10) * FROM dbo.Country";
+		String query ="SELECT top(10) * FROM taner.dbo.Country";
 		return jdbcTemplate.query(query, rowMapperCountry);
 	}
 
@@ -42,7 +42,7 @@ public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {
 	@Override
 	public  List<Country>  getCountry(String countryCode) {
 		String query ="SELECT * FROM dbo.Country WHERE Code = :countryCode";
-		Map<String, Object> namedParameters = new HashMap<String, Object>();
+		Map<String, Object> namedParameters = new HashMap<>();
 		namedParameters.put("countryCode", countryCode);
 		return  namedParameterJdbcTemplate.query(query, namedParameters,rowMapperCountry);
 	}
@@ -52,7 +52,7 @@ public class CommonDAO extends BaseJDBCDAO implements ICommonDAO {
 	public int insertCountry(Country country) {
 		int rowAffected = 0;
 		String query = "INSERT INTO dbo.Country (Code, TripleCode, Name, PhoneCode, [Order], CreateDate, IsActive) VALUES (:code, :tripleCode, :name, :phoneCode, :order, GETDATE(),:isActive) ";
-		Map<String, Object> namedParameters = new HashMap<String, Object>();
+		Map<String, Object> namedParameters = new HashMap<>();
 		namedParameters.put("code", country.getCode());
 		namedParameters.put("tripleCode", country.getTripleCode());
 		namedParameters.put("name", country.getName());

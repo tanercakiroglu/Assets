@@ -22,9 +22,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName"
 			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<beans:property name="url" value="jdbc:sqlserver://188.121.44.212" />
-		<beans:property name="username" value="assets-user" />
-		<beans:property name="password" value="Sa123456" />
+		<beans:property name="url" value="jdbc:sqlserver://localhost:1433" />
+		<beans:property name="username" value="sa" />
+		<beans:property name="password" value="taner1" />
 	</beans:bean>
 
 	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -50,13 +50,6 @@
 		<custom-filter ref="userTokenFilter" after="SECURITY_CONTEXT_FILTER" />
 		<access-denied-handler ref="restAccessDeniedHandler" />
 		<csrf disabled="true" />
-<!-- 		<form-login login-processing-url="/rest/authenticate" -->
-<!-- 			authentication-failure-handler-ref="restAuthenticationFailureHandler" -->
-<!-- 			authentication-success-handler-ref="restAuthenticationSuccessHandler" -->
-<!-- 			username-parameter="username" password-parameter="password" /> -->
-<!-- 		<logout logout-url="/rest/logout" invalidate-session="true" -->
-<!-- 			delete-cookies="true" /> -->
-<!-- 		<remember-me services-ref="rememberMeServices" key="rememberme"></remember-me> -->
 
 	</http>
 

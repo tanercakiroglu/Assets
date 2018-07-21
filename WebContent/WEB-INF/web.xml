@@ -22,6 +22,7 @@
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 
+	
 	<filter>
 		<filter-name>RequestFilter</filter-name>
 		<filter-class>com.chrental.configuration.RequestFilter</filter-class>

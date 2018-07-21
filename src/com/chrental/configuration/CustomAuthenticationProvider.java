@@ -5,7 +5,6 @@ import java.util.Date;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 
 import com.chrental.util.Constants;
 import com.nimbusds.jose.JOSEException;
@@ -26,7 +25,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	        this.verifier = new MACVerifier(Constants.SECRET_KEY);
 	    }
 	@Override
-	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+	public Authentication authenticate(Authentication authentication)  {
 		
 		JWTToken jwtToken = (JWTToken) authentication;
 		JWT jwt = jwtToken.getJwt();
